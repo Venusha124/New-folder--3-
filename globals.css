@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 34 24% 97%;
+  /* Ivory Alabaster #FAF8F5 */
+  --foreground: 34 15% 10%;
+  /* Obsidian Charcoal #1D1B19 */
+  --card: 0 0% 100%;
+  /* White #FFFFFF */
+  --card-foreground: 34 15% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 34 15% 10%;
+  --primary: 34 38% 46%;
+  /* Warm Cinnamon Gold #A1825B */
+  --primary-foreground: 34 20% 98%;
+  --secondary: 34 15% 93%;
+  /* Linen/Sand #ECE7E1 */
+  --secondary-foreground: 34 15% 10%;
+  --muted: 34 15% 93%;
+  --muted-foreground: 34 10% 45%;
+  --accent: 34 15% 93%;
+  --accent-foreground: 34 15% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 34 12% 87%;
+  /* Soft Warm Border #E0D9CE */
+  --input: 34 12% 87%;
+  --ring: 34 38% 46%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3%;
+  /* Obsidian #080808 */
+  --foreground: 34 20% 92%;
+  /* Parchment Cream #FAF6EE */
+  --card: 0 0% 5%;
+  /* Deep Ebony #0D0D0D */
+  --card-foreground: 34 20% 92%;
+  --popover: 0 0% 3%;
+  --popover-foreground: 34 20% 92%;
+  --primary: 34 44% 69%;
+  /* Cinnamon Bronze #D2B48C */
+  --primary-foreground: 0 0% 5%;
+  --secondary: 34 8% 8%;
+  /* Deep Charcoal #161514 */
+  --secondary-foreground: 34 20% 92%;
+  --muted: 34 8% 8%;
+  --muted-foreground: 34 10% 55%;
+  --accent: 34 8% 8%;
+  --accent-foreground: 34 20% 92%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 34 20% 92%;
+  --border: 34 10% 12%;
+  /* Bronze Line #211F1D */
+  --input: 34 10% 12%;
+  --ring: 34 44% 69%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50 transition-colors duration-300;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-black;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
